@@ -3,12 +3,12 @@
 
 // ( for (;;) creates an infinite loop)
 
-include <iostream>
-include <windows.h>
-include <Winuser.h>
-include <fstream>
+#include <iostream>
+#include <windows.h>
+#include <Winuser.h>
+#include <fstream>
 
-void log()
+void log();
 int main()
 {
     char key;
