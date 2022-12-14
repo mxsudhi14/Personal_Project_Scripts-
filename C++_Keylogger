@@ -1,7 +1,7 @@
 
 // C++ Keylogger Project 
 // Fun project that I worked on to learn the fundamentals of C++ and further develop a understanding of malware and its coding structure. 
-
+// Used ascii table for cases.
 
 #include <iostream>
 #include <windows.h>
